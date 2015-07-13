@@ -215,5 +215,5 @@ pip-log.txt
 #Mr Developer
 .mr.developer.cfg
 
-nodejs_modules
+node_modules
 npm-debug.log
