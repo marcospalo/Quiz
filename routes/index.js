@@ -12,6 +12,9 @@ router.get('/author', function(req, res) {
   res.render('author', { autor: 'Marcos Palomo' });
 });
 
+//Autoload
+router.param('quizId', quizController.load);
+
 //Definicion de rutas de /quizes
 router.get('/quizes', quizController.index);
 router.get('/quizes/:quizId(\\d+)', quizController.show);
