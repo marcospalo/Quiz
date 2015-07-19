@@ -1,21 +1,18 @@
 <div>
 <table>
 <% var i; for (i=0; i < quizes.length; i++){%>
-	<tr><td><a href="/quizes/<%= quizes[i].id %>"> <%= quizes[i].pregunta %> </a></td></tr>
+	<tr><td><a href="/quizes/<%= quizes[i].id %>"> <%= quizes[i].pregunta %> </a></td><td> <%= quizes[i].tema %> </td></tr>
 	<%} %>
 </table>
 </div>
 <div>
 <form method="get" action="/quizes/?">
-  Introduzca criterio de busqueda para las preguntas.
-  <br/>
+  Introduzca criterio de busqueda: 
   <input type="text" name="search" value=""/>
   <input type="submit" value="Enviar" />
 </form>
 </div>
-<p><p>
 <div>
-Pulse para crear preguntas nuevas:
-<p>
+Pulse para crear preguntas nuevas: 
 <a href="/quizes/new"><button type="button">Crear pregunta</button></a>
 </div>
