@@ -2,7 +2,7 @@ var model = require('../models/models.js');
 
 //Autoload
 exports.load = function(req,res,next,commentId){
-	models.Comment.find({
+	model.Comment.find({
 		where: {
 			id: Number(commentId)
 		}
@@ -24,7 +24,7 @@ exports.new = function(req, res) {
 exports.create = function(req, res) {
   var comment = model.Comment.build(
     { texto: req.body.comment.texto,
-      QuizId: req.params.quiz
+      QuizId: req.params.quizId
     });
 
   comment.validate()

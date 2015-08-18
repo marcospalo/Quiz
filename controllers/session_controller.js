@@ -11,7 +11,7 @@ exports.new = function(req,res) {
 	var errors = req.session.errors || {};
 	req.session.errors = {};
 	
-	res.render('session/new', {errors: errors});
+	res.render('sessions/new', {errors: errors});
 };
 
 //POST- /login
@@ -31,7 +31,7 @@ exports.create = function (req, res){
 		
 		req.session.user ={id:user.id, username:user.username};
 		
-		req.redirect(req.session.redir.toString());
+		res.redirect(req.session.redir.toString());
 	});
 };
 
