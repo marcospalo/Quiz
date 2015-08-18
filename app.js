@@ -37,6 +37,31 @@ app.use(function(req, res, next) {
 	next();
 });
 
+//Auto.logout
+app.use(function(req, res, next) {
+	if(req.session.user){
+		var fechaActual = new Date();	
+		if( req.session.temporizador){
+			var fechaOriginal = new Date(req.session.temporizador);
+		}
+		
+		if( !req.session.temporizador){
+			console.log('______________________INICIO de temporizador________________________');
+			req.session.temporizador= new Date();
+		}
+		else if(fechaActual.getTime() - fechaOriginal.getTime() <= 120000){
+			console.log('______________________Menos de 2 minutos________________________');
+			req.session.temporizador= new Date();
+		}
+		else{
+			console.log('_________________________Caducada Sesion______________________');
+			res.locals.session = req.session;
+			res.redirect("/logout");
+		}
+	}	
+	next();
+});
+
 app.use('/', routes);
 
 
